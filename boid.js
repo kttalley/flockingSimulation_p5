@@ -1,6 +1,6 @@
 class Boid {
     constructor() {
-        this.position = createVector(mouseX, mouseY);
+        this.position = createVector(random(width), random(height));
         this.velocity = p5.Vector.random2D();
         this.velocity.setMag(random(0.5,2.5));
         this.acceleration = createVector();
@@ -9,6 +9,10 @@ class Boid {
     update() {
         this.position.add(this.velocity);
         this.velocity.add(this.acceleration);
+    }
+
+    applyForce(force){
+        this.acceleration.add(force);
     }
 
     show() {
